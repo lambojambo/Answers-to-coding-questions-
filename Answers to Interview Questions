@@ -1,0 +1,29 @@
+/**This is code I used to answer common interview questions that I might run into on stratascratch to further my knowlege on SQL. 
+They vary in difficulty from easy to hard. **/
+
+  /**#1
+ Find the average number of beds in each neighborhood that has at least 3 beds in total.**/
+  
+  select neighbourhood, avg(beds) avg_beds 
+  from airbnb_search_details;
+  
+  /**#2
+  Output results along with the neighborhood name and sort the results based on the number of average beds in descending order.**/
+  
+  select neighbourhood, 
+    avg(beds) avg_beds 
+from airbnb_search_details
+GROUP BY 1
+ORDER BY 2 DESC; 
+
+/**#3
+Filtering out data that does not have at least 3 beds in total**/
+
+select neighbourhood, 
+    avg(beds) avg_beds 
+from airbnb_search_details
+GROUP BY 1
+HAVING SUM(beds) >= 3 
+ORDER BY 2 DESC;
+
+Next Question**/
